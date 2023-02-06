@@ -1,4 +1,3 @@
-// 1. import `NextUIProvider` component
 import {
   createTheme,
   Link,
@@ -6,6 +5,10 @@ import {
   styled,
   Text
 } from "@nextui-org/react";
+import { Layout } from "@/components/Layout";
+import Nav from "@/components/Nav";
+import '../styles/transition.css'
+import { Container } from "reactstrap";
 
 const darkTheme = createTheme({
   type: "light",
@@ -17,9 +20,14 @@ const darkTheme = createTheme({
 function App({ Component, pageProps }) {
   return (
     // 2. Use at the root of your app
-    <NextUIProvider theme = { darkTheme }>
-      <Component {...pageProps} />
-    </NextUIProvider>
+    <Layout>
+      <NextUIProvider theme = { darkTheme }>
+        <Container fluid>
+        <Nav />
+        <Component {...pageProps} />
+        </Container>
+      </NextUIProvider>
+    </Layout>
   );
 }
 
